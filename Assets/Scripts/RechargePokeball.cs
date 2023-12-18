@@ -18,7 +18,7 @@ public class RechargePokeball : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("I'm in");
-        
+        if(collision.CompareTag("Pokeball"))
+            Debug.Log("I'm in");
     }
 }
