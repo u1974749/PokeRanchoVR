@@ -6,6 +6,7 @@ public class PokeballBehaviour : MonoBehaviour
 {
     [SerializeField] private AudioClip _shaking;
     [SerializeField] private AudioClip _captured;
+    [SerializeField] private Material _whiteMat;
 
     private Animator anim;
     private Rigidbody rb;
@@ -25,6 +26,8 @@ public class PokeballBehaviour : MonoBehaviour
         meshes = gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
 
         pokemonCaptured = false;
+
+        rb.AddForce(0, 5f, 5f, ForceMode.Impulse);
     }
 
     private void Update()
@@ -40,37 +43,52 @@ public class PokeballBehaviour : MonoBehaviour
             {
                 shaking = false;
                 if (pokemonCaptured) Invoke("FinnishCapture",0.5f);
-                //else Invoke("PokemonEscaped",0.5f);
+                else Invoke("FailedCapture",0.5f);
             }
         }
     }
 
     private void OnCollisionEnter(Collision other)
     {
+        rb.isKinematic = true;
         if (other.gameObject.CompareTag("pokemon"))
         {
-        //  conseguir probabilidad
-        //  calcular si ha sido capturado
-        //  if capturado
-            pokemonCaptured = true;
-            ShakeAnimation(3);
-        //else
-        //{
-        //  ShakeAnimation(intrandom)
+            float probability = 80.0f;//  conseguir probabilidad, de momento 80%
+            float randomNumber = Random.Range(0.0f, 100.0f);
+
+            if (randomNumber < probability) //capturado
+            {
+                Debug.Log("Pokemon Captured");
+                pokemonCaptured = true;
+                ShakeAnimation(3);
+            }
+            else
+            {
+                Debug.Log("Pokemon Escaped");
+                ShakeAnimation(Random.Range(1, 3));
+            }
         }
         else
         {
-            Invoke("DestroyItself", 0.5f);
+            FailedCapture();
         }
     }
 
     private void ShakeAnimation(int nSakes)
     {
-        rb.isKinematic = true;
         timesToShake = nSakes;
         audioSrc.clip = _shaking;
         audioSrc.Play();
         shaking = true;
+    }
+
+    private void FailedCapture()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            meshes[i].material = _whiteMat;
+        }
+        Invoke("DestroyItself", 1.0f);
     }
 
     private void FinnishCapture()

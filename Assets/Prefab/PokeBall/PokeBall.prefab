@@ -81,3 +81,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f0569db7aa12b40bd815fef0a4e6eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shaking: {fileID: 8300000, guid: 5e6db9a23682d5343948fb0bab951970, type: 3}
+  _captured: {fileID: 8300000, guid: 5fb67048f2176f04fb5936bb93087ff8, type: 3}
+  _whiteMat: {fileID: -6697374247935871825, guid: 7a53a05d3fe73aa459af80aed815a497, type: 3}
