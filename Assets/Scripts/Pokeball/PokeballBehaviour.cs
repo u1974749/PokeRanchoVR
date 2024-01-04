@@ -12,6 +12,7 @@ public class PokeballBehaviour : MonoBehaviour
     private Rigidbody rb;
     private AudioSource audioSrc;
     private SkinnedMeshRenderer[] meshes;
+    private PokemonMovement lastPokemon;
 
     private bool pokemonCaptured;
 
@@ -44,27 +45,30 @@ public class PokeballBehaviour : MonoBehaviour
                 shaking = false;
                 if (pokemonCaptured) Invoke("FinnishCapture",0.5f);
                 else Invoke("FailedCapture",0.5f);
+
+                
             }
         }
     }
 
     private void OnCollisionEnter(Collision other)
     {
+
         rb.isKinematic = true;
         if (other.gameObject.CompareTag("pokemon"))
         {
-            float probability = 80.0f;//  conseguir probabilidad, de momento 80%
+            lastPokemon = other.gameObject.GetComponent<PokemonMovement>();
+            float probability = 60.0f;//  conseguir probabilidad, de momento 80%
             float randomNumber = Random.Range(0.0f, 100.0f);
 
+            lastPokemon.IsCapturing();
             if (randomNumber < probability) //capturado
             {
-                Debug.Log("Pokemon Captured");
                 pokemonCaptured = true;
                 ShakeAnimation(3);
             }
             else
             {
-                Debug.Log("Pokemon Escaped");
                 ShakeAnimation(Random.Range(1, 3));
             }
         }
@@ -89,6 +93,7 @@ public class PokeballBehaviour : MonoBehaviour
             meshes[i].material = _whiteMat;
         }
         Invoke("DestroyItself", 1.0f);
+        
     }
 
     private void FinnishCapture()
@@ -100,10 +105,12 @@ public class PokeballBehaviour : MonoBehaviour
         audioSrc.clip = _captured;
         audioSrc.Play();
         Invoke("DestroyItself", 1.0f);
+        lastPokemon.CaptureEnd(pokemonCaptured);
     }
 
     private void DestroyItself()
     {
         Destroy(gameObject);
+        lastPokemon.CaptureEnd(pokemonCaptured);
     }
 }
