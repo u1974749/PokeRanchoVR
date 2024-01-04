@@ -27,7 +27,6 @@ public class PokemonMovement : MonoBehaviour
         if( agent != null  && agent.remainingDistance <= agent.stoppingDistance) {
             animator.SetBool("Idle", true);
             if(endIdle){
-                Debug.Log("holi");
                 animator.SetBool("Idle", false);
                 agent.SetDestination(RandomNavMeshLocation());
                 endIdle = false;
@@ -48,5 +47,20 @@ public class PokemonMovement : MonoBehaviour
 
     public void EndAnimation() {
         endIdle = true;
+    }
+
+    public void IsCapturing() {
+        foreach (Transform child in transform)
+            child.gameObject.SetActive(false);        
+    }
+
+    public void CaptureEnd(bool captured) {
+        if(captured) {
+            Destroy(gameObject);
+        }
+        else {
+            foreach (Transform child in transform)
+                child.gameObject.SetActive(true);
+        }
     }
 }
