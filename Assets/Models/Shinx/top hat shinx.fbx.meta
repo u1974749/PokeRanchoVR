@@ -404,7 +404,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.954023
+        functionName: EndAnimation
+        data: 
+        objectReferenceParameter: {fileID: 378999227701541584, guid: 58fab91aa91f01f4c9a9f16117da1f96, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
