@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class UIPokedex : MonoBehaviour
 {
-    //[SerializeField] List<RawImage> capture = new List<RawImage>();
     [SerializeField] List<Sprite> capture = new List<Sprite>();
     [SerializeField] List<Sprite> actualize = new List<Sprite>();
     [SerializeField] List<Sprite> pokemons = new List<Sprite>();
@@ -12,7 +11,6 @@ public class UIPokedex : MonoBehaviour
     {
         for (int i = 0; i < capture.Count; i++)
             capture[i] = actualize[i];
-            //capture[i].texture = actualize[i].texture;
     }
     public void obtainPokemon(string namePokemon)
     {

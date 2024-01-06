@@ -18,9 +18,9 @@ public class GameController : MonoBehaviour
     }
 
     public void addAllPokeballs(){
-        GameObject pokeball_instantiate = GameObject.FindGameObjectWithTag("Pokeball").GetComponent<GameObject>();
-        if(pokeball_instantiate != null)
-            pokeball_instantiate.GetComponent<Pokeball>().addAllPokeballs();
+        //GameObject pokeball_instantiate = GameObject.FindGameObjectWithTag("Pokeball").GetComponent<GameObject>();
+        if(pokeballScript != null)
+            pokeballScript.addAllPokeballs();
         //pokeballScript.addAllPokeballs();
     }
 }

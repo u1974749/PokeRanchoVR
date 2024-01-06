@@ -1,31 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+//using TMPro;
 
 public class Pokeball : MonoBehaviour
 {
-    public TMP_Text nPokeball;
+    GameController gameController;
+    [SerializeField] GameObject[] pokeballsPrefab;
+    //public TMP_Text nPokeball;
     public int numberPokeballs;
     public int totalPokeballs;
 
-    void Update(){
-        numberPokeballUI();
-    }
-    public void numberPokeballUI()
+    private void Start()
     {
-        nPokeball.text = (numberPokeballs).ToString();
+        numberPokeballs = totalPokeballs = pokeballsPrefab.Length;
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            sustractPokeball();
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            addAllPokeballs();
+        }
     }
 
-    public void sustractPokeball(){
-        numberPokeballs -= 1;
+    public void sustractPokeball()
+    {
+        if (numberPokeballs > 0)
+        {
+            numberPokeballs -= 1;
+            pokeballsPrefab[numberPokeballs].SetActive(false);
+        }
+        if (numberPokeballs == 0)
+        {
+            GameObject pokeball = GameObject.FindGameObjectWithTag("Pokeball");
+            Destroy(pokeball);
+            numberPokeballs -= 1;
+        }
     }
 
-    public int nPokeballs(){
+    public int nPokeballs()
+    {
         return numberPokeballs;
     }
 
-    public void addAllPokeballs(){
+    public void addAllPokeballs()
+    {
+        if(numberPokeballs == -1)
+        {
+            gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+            gameController.createPokeball();
+        }
         numberPokeballs = totalPokeballs;
+        for (int i = 0; i < pokeballsPrefab.Length; i++)
+        {
+            pokeballsPrefab[i].SetActive(true);
+            Debug.Log(i);
+        }
     }
 }

@@ -183,7 +183,6 @@ GameObject:
   - component: {fileID: 938945483809927411}
   - component: {fileID: 170833695659035098}
   - component: {fileID: 8674570618819814231}
-  - component: {fileID: 5435302834872106191}
   - component: {fileID: 3837053429211693052}
   - component: {fileID: 7732442735979826831}
   m_Layer: 0
@@ -280,21 +279,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5435302834872106191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9127416726594144491}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 318af6fe3fecdad43b9ac444094c0884, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nPokeball: {fileID: 1333293402053347579}
-  numberPokeballs: 0
-  totalPokeballs: 5
 --- !u!114 &3837053429211693052
 MonoBehaviour:
   m_ObjectHideFlags: 0

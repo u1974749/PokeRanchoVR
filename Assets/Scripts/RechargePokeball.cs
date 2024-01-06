@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RechargePokeball : MonoBehaviour
 {
+    GameController gameController;
     bool trigger = false;
     private void OnTriggerEnter(Collider collision)
     {
@@ -23,8 +24,7 @@ public class RechargePokeball : MonoBehaviour
         if (trigger)
         {
             Debug.Log("Recharge trigger!!");
-            Pokeball pokeball = GameObject.FindGameObjectWithTag("Pokeball").GetComponent<Pokeball>();
-            pokeball.addAllPokeballs();
+            gameController.addAllPokeballs();
 
         }
     }
