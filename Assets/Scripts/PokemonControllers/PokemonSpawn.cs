@@ -36,7 +36,8 @@ public class PokemonSpawn : MonoBehaviour
         int index = Random.Range(0, allPkmn.Length);
         int pos = Random.Range(0, 4);
 
-        Instantiate(allPkmn[index], spawnPoints[pos].transform.position, Quaternion.identity);
+        GameObject newPokemon = Instantiate(allPkmn[index], spawnPoints[pos].transform.position, Quaternion.identity);
+        newPokemon.name = newPokemon.name.Replace("(Clone)", "");
         
     }
 

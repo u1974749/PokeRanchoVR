@@ -66,6 +66,7 @@ public class PokeballBehaviour : MonoBehaviour
             {
                 pokemonCaptured = true;
                 ShakeAnimation(3);
+                Pokedex.CapturePokemon(other.gameObject.name);
             }
             else
             {
