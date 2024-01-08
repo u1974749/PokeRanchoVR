@@ -697,7 +697,7 @@ Transform:
   m_GameObject: {fileID: 3432147486929564027}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00000008146034, y: -4.5467146e-13, z: -9.313226e-10, w: 1}
-  m_LocalPosition: {x: 1.1307418, y: 0, z: -2.730063}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1066,6 +1066,7 @@ GameObject:
   - component: {fileID: 7451547089557153561}
   - component: {fileID: 27510837329844785}
   - component: {fileID: 6374818364561182014}
+  - component: {fileID: 3851651913077958049}
   m_Layer: 0
   m_Name: Sneasel
   m_TagString: pokemon
@@ -1101,7 +1102,7 @@ Animator:
   m_GameObject: {fileID: 4592344658955469068}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 57759ff0b4f4a5d4c910de7bbd40d18c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1148,6 +1149,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   walkRadius: 15
+--- !u!135 &3851651913077958049
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4592344658955469068}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.86
+  m_Center: {x: 0, y: 1.52, z: 0}
 --- !u!1 &4962113324906588242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,7 +1480,7 @@ Transform:
   m_GameObject: {fileID: 6490492913132770787}
   serializedVersion: 2
   m_LocalRotation: {x: 0.000000081460335, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.130742, y: 0, z: -2.730063}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1875,7 +1897,7 @@ Transform:
   m_GameObject: {fileID: 8399063353110296134}
   serializedVersion: 2
   m_LocalRotation: {x: 0.00000008146034, y: -0.000000007450583, z: 0.000000022351738, w: 1}
-  m_LocalPosition: {x: 1.130742, y: 0, z: -2.730063}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_ConstrainProportionsScale: 0
   m_Children: []

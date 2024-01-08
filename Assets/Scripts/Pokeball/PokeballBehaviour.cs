@@ -45,8 +45,11 @@ public class PokeballBehaviour : MonoBehaviour
             if (timesToShake < 0)
             {
                 shaking = false;
-                if (pokemonCaptured) Invoke("FinnishCapture",0.5f);
-                else Invoke("FailedCapture",0.5f);
+                if (pokemonCaptured) Invoke("FinnishCapture", 0.5f);
+                else
+                {
+                    Invoke("FailedCapture", 0.5f);
+                }
             }
         }
     }
@@ -58,7 +61,7 @@ public class PokeballBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("pokemon"))
         {
             lastPokemon = other.gameObject.GetComponent<PokemonMovement>();
-            int probability = 80;// probabilidad  80%
+            int probability = 100;// probabilidad  80%
             int randomNumber = Random.Range(0, 100);
 
             lastPokemon.IsCapturing();
@@ -94,7 +97,10 @@ public class PokeballBehaviour : MonoBehaviour
             meshes[i].material = _whiteMat;
         }
         Invoke("DestroyItself", 1.0f);
-        
+
+        if(lastPokemon != null)
+            lastPokemon.CaptureEnd(pokemonCaptured);
+
     }
 
     private void FinnishCapture()

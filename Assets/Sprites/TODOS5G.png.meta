@@ -5213,7 +5213,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TODOS5G_243
+      name: Sneasel
       rect:
         serializedVersion: 2
         x: 192
@@ -6221,7 +6221,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TODOS5G_291
+      name: aZigZagoon
       rect:
         serializedVersion: 2
         x: 192
@@ -16081,6 +16081,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Glaceon: -1573852532
+      Sneasel: -2315822
       TODOS5G_0: 1604426394
       TODOS5G_1: -995257311
       TODOS5G_10: -817632514
@@ -16242,7 +16243,6 @@ TextureImporter:
       TODOS5G_240: 2035632241
       TODOS5G_241: 998848968
       TODOS5G_242: -1708544387
-      TODOS5G_243: -2315822
       TODOS5G_244: -1118038079
       TODOS5G_245: -171460326
       TODOS5G_246: 1913311262
@@ -16295,7 +16295,6 @@ TextureImporter:
       TODOS5G_289: 465569603
       TODOS5G_29: -987393361
       TODOS5G_290: -1125481378
-      TODOS5G_291: 223530588
       TODOS5G_292: -1693610522
       TODOS5G_293: -1263804875
       TODOS5G_294: 1425578537
@@ -16840,6 +16839,7 @@ TextureImporter:
       TODOS5G_97: 492865196
       TODOS5G_98: -1460223454
       TODOS5G_99: 697877915
+      aZigZagoon: 223530588
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
