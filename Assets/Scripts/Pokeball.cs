@@ -7,6 +7,7 @@ public class Pokeball : MonoBehaviour
 {
     GameController gameController;
     [SerializeField] GameObject[] pokeballsPrefab;
+    [SerializeField] GameObject player;
     //public TMP_Text nPokeball;
     public int numberPokeballs;
     public int totalPokeballs;
@@ -25,6 +26,7 @@ public class Pokeball : MonoBehaviour
         {
             addAllPokeballs();
         }
+        gameObject.transform.position = new Vector3(player.transform.position.x, gameObject.transform.position.y, player.transform.position.z);
     }
 
     public void sustractPokeball()
