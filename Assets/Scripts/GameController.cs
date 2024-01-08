@@ -10,21 +10,22 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject pokeball;
     [SerializeField] Pokeball pokeballScript;
     [SerializeField] GameObject pokeballProjectile;
+    [SerializeField] GameObject rightController;
     
     private Vector3 RighHandPosition = new();
     List<UnityEngine.XR.InputDevice> rightHandedControllers = new List<UnityEngine.XR.InputDevice>();
+    
     private bool gripL;
+    private bool waited = true;
     
     private void Start(){
         
         createPokeball();
-
-
-        //addAllPokeballs();
     }
 
     private void Update(){
 
+        int nPokeballs = pokeballScript.nPokeballs();
         if (rightHandedControllers.Count <= 0)
         {
             var rdesiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Right | UnityEngine.XR.InputDeviceCharacteristics.Controller;
@@ -34,10 +35,32 @@ public class GameController : MonoBehaviour
         bool triggerValue;
         foreach (UnityEngine.XR.InputDevice device in rightHandedControllers)
         {
-            if(device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerValue) && triggerValue)
-                //Instantiate()
-                Debug.Log("pulsando");
+            if(device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerValue) && triggerValue && waited && nPokeballs > 0)
+            {
+                Vector3 pos = new Vector3(rightController.transform.position.x, rightController.transform.position.y, rightController.transform.position.z);
+                pos += transform.forward;
+                Instantiate(pokeballProjectile, pos, rightController.transform.rotation);
+                waited = false;
+                Invoke("Wait1Second", 1.0f);
+                pokeballScript.sustractPokeball();
+            }
+
         }
+        if (Input.GetKeyDown("space") && nPokeballs > 0)
+        {
+            Vector3 pos = new Vector3(rightController.transform.position.x, rightController.transform.position.y, rightController.transform.position.z);
+            pos += transform.forward;
+            Instantiate(pokeballProjectile, pos, rightController.transform.rotation);
+            waited = false;
+            Invoke("Wait1Second", 1.0f);
+            pokeballScript.sustractPokeball();
+
+        }
+    }
+
+    private void Wait1Second()
+    {
+        waited = true;
     }
 
     public void createPokeball(){

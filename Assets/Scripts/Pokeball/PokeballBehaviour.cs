@@ -30,7 +30,7 @@ public class PokeballBehaviour : MonoBehaviour
 
         pokemonCaptured = false;
 
-        rb.AddForce(0, 5f, 5f, ForceMode.Impulse);
+        rb.AddForce(transform.forward*10, ForceMode.Impulse);
     }
 
     private void Update()
@@ -47,8 +47,6 @@ public class PokeballBehaviour : MonoBehaviour
                 shaking = false;
                 if (pokemonCaptured) Invoke("FinnishCapture",0.5f);
                 else Invoke("FailedCapture",0.5f);
-
-                
             }
         }
     }
@@ -114,6 +112,5 @@ public class PokeballBehaviour : MonoBehaviour
     {
         _haptic.right = true;
         Destroy(gameObject);
-        lastPokemon.CaptureEnd(pokemonCaptured);
     }
 }
