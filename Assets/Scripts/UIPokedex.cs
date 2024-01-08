@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class UIPokedex : MonoBehaviour
 {
-    [SerializeField] List<Sprite> capture = new List<Sprite>();
+    [SerializeField] List<SpriteRenderer> capture = new List<SpriteRenderer>();
     [SerializeField] List<Sprite> actualize = new List<Sprite>();
     [SerializeField] List<Sprite> pokemons = new List<Sprite>();
     public void Actualize()
     {
         for (int i = 0; i < capture.Count; i++)
-            capture[i] = actualize[i];
+            capture[i].sprite = actualize[i];
     }
     public void obtainPokemon(string namePokemon)
     {
