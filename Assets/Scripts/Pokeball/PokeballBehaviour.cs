@@ -13,6 +13,7 @@ public class PokeballBehaviour : MonoBehaviour
     private AudioSource audioSrc;
     private SkinnedMeshRenderer[] meshes;
     private PokemonMovement lastPokemon;
+    private Haptic _haptic;
 
     private bool pokemonCaptured;
 
@@ -25,6 +26,7 @@ public class PokeballBehaviour : MonoBehaviour
         anim = gameObject.GetComponent<Animator>();
         audioSrc = gameObject.GetComponent<AudioSource>();
         meshes = gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+        _haptic = GameObject.FindObjectOfType<Haptic>();
 
         pokemonCaptured = false;
 
@@ -58,8 +60,8 @@ public class PokeballBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("pokemon"))
         {
             lastPokemon = other.gameObject.GetComponent<PokemonMovement>();
-            float probability = 60.0f;//  conseguir probabilidad, de momento 80%
-            float randomNumber = Random.Range(0.0f, 100.0f);
+            int probability = 80;// probabilidad  80%
+            int randomNumber = Random.Range(0, 100);
 
             lastPokemon.IsCapturing();
             if (randomNumber < probability) //capturado
@@ -110,6 +112,7 @@ public class PokeballBehaviour : MonoBehaviour
 
     private void DestroyItself()
     {
+        _haptic.right = true;
         Destroy(gameObject);
         lastPokemon.CaptureEnd(pokemonCaptured);
     }
