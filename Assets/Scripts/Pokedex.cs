@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class Pokedex : MonoBehaviour
 {
-    [SerializeField] ListOfPokemon pkmnList;
+    [SerializeField]  ListOfPokemon Public_pkmnList;
+    [SerializeField]  GameObject Public_ranchSpawner;
+
     public static Dictionary<string, bool> pokedex { get; private set; } = new Dictionary<string, bool>();
+    private static ListOfPokemon pkmnList;
+    private static GameObject ranchSpawner;
 
     // Start is called before the first frame update
     void Start() {
+
+        pkmnList = Public_pkmnList;
+        ranchSpawner = Public_ranchSpawner;
 
         if(pkmnList != null) {
             GameObject[] allPokemons = pkmnList.allPokemon;
@@ -31,6 +38,14 @@ public class Pokedex : MonoBehaviour
     public static void CapturePokemon(string pkmn) {
         if (pokedex.ContainsKey(pkmn)){
             pokedex[pkmn] = true;
+        }
+        for(int i = 0; i < pkmnList.allPokemon.Length; i++)
+        {
+            if (pkmnList.allPokemon[i].name == pkmn)
+            {
+                Instantiate(pkmnList.allPokemon[i], ranchSpawner.transform.position, Quaternion.identity);
+                break;
+            }
         }
     }
 }
